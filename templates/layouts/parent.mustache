@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{$title}}Default Title{{/title}}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    header, main, footer { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <!-- Block 1: Header (can be overridden) -->
+  <header>
+    {{$header}}
+    Default Header Content
+    {{/header}}
+  </header>
+
+  <!-- Block 2: Main (can be overridden) -->
+  <main>
+   
+    {{$main}}
+    Default Main Content
+    {{/main}}
+  </main>
+
+  <!-- Block 3: Footer (can be overridden) -->
+  <footer>
+    {{$footer}}
+    Default Footer Content
+    {{/footer}}
+  </footer>
+
+  <!-- Block 4: Scripts (can be overridden) -->
+  {{$scripts}}
+  <!-- Default scripts -->
+  {{/scripts}}
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "title": "Projects",
+  "projects": [
+    {
+      "title": "E-Commerce Platform",
+      "description": "A full-featured e-commerce solution built with React and Node.js, featuring user authentication, payment processing, and admin dashboard.",
+      "category": "web",
+      "technologies": ["React", "Node.js", "MongoDB"],
+      "image": "project1.svg",
+      "liveUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "title": "Task Management App",
+      "description": "A mobile application for task management with real-time synchronization, offline support, and intuitive user interface design.",
+      "category": "mobile",
+      "technologies": ["React Native", "Firebase", "Redux"],
+      "image": "project2.svg",
+      "liveUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "title": "RESTful API Service",
+      "description": "A scalable REST API built with Express.js and PostgreSQL, featuring authentication, rate limiting, and comprehensive documentation.",
+      "category": "api",
+      "technologies": ["Express.js", "PostgreSQL", "JWT"],
+      "image": "project3.svg",
+      "liveUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "title": "Social Media Dashboard",
+      "description": "A comprehensive social media analytics dashboard with real-time data visualization, user engagement metrics, and reporting features.",
+      "category": "web",
+      "technologies": ["Vue.js", "D3.js", "Node.js"],
+      "image": "project4.svg",
+      "liveUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "title": "Learning Management System",
+      "description": "An online learning platform with course management, video streaming, progress tracking, and interactive quizzes for educational institutions.",
+      "category": "web",
+      "technologies": ["Next.js", "Prisma", "PostgreSQL"],
+      "image": "project5.svg",
+      "liveUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "title": "Fitness Tracking App",
+      "description": "A comprehensive fitness application with workout tracking, nutrition logging, progress visualization, and social features for fitness enthusiasts.",
+      "category": "mobile",
+      "technologies": ["Flutter", "Firebase", "Charts"],
+      "image": "project6.svg",
+      "liveUrl": "#",
+      "githubUrl": "#"
+    }
+  ]
+}

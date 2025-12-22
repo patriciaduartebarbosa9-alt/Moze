@@ -1,0 +1,39 @@
+<div class="project-card" data-category="{{category}}">
+    <div class="project-image">
+        {{#image}}
+        <img src="./assets/images/{{image}}" alt="{{title}}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        {{/image}}
+        <div class="project-placeholder" {{#image}}style="display:none;"{{/image}}>
+            <div class="placeholder-content">
+                <i class="fas fa-{{#category}}{{.}}{{/category}}{{^category}}image{{/category}}"></i>
+                <span class="placeholder-text">{{title}}</span>
+                <span class="placeholder-category">{{category}}</span>
+            </div>
+        </div>
+        <div class="project-overlay">
+            <div class="project-links">
+                {{#liveUrl}}
+                <a href="{{liveUrl}}" class="project-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+                {{/liveUrl}}
+                {{#githubUrl}}
+                <a href="{{githubUrl}}" class="project-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                {{/githubUrl}}
+            </div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">{{title}}</h3>
+        <p class="project-description">
+            {{description}}
+        </p>
+        <div class="project-tech">
+            {{#technologies}}
+            <span class="tech-tag">{{.}}</span>
+            {{/technologies}}
+        </div>
+    </div>
+</div>

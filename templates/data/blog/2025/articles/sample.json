@@ -1,0 +1,13 @@
+{
+  "title": "Modern JavaScript Frameworks",
+  "article": {
+    "title": "Modern JavaScript Frameworks: A Comparison",
+    "subtitle": "React, Vue, Angular, and beyond",
+    "date": "2025-01-25",
+    "category": "JavaScript",
+    "readTime": "12 min read",
+    "author": "Arlindo Santos",
+    "content": "The JavaScript ecosystem offers many framework options. Let's explore the strengths of each...",
+    "tags": ["JavaScript", "Frameworks", "React", "Vue", "Angular"]
+  }
+}

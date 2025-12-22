@@ -1,0 +1,26 @@
+{{<layout}}
+{{$main}}
+<section class="page-header">
+    <div class="container">
+        <h1>Meus Projectos</h1>
+        <p>Uma vitrine do meu trabalho recente e conquistas</p>
+    </div>
+</section>
+
+<section class="projects-grid">
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="web">Web Apps</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="api">APIs</button>
+        </div>
+        
+        <div class="projects-container">
+            {{#projects}}
+            {{> project-card}}
+            {{/projects}}
+        </div>
+    </div>
+</section>
+{{/main}}

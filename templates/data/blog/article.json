@@ -1,0 +1,13 @@
+{
+  "title": "CSS Grid vs Flexbox",
+  "article": {
+    "title": "CSS Grid vs Flexbox: When to Use Each",
+    "subtitle": "Understanding the differences and use cases",
+    "date": "2025-01-05",
+    "category": "CSS",
+    "readTime": "6 min read",
+    "author": "Arlindo Santos",
+    "content": "CSS Grid and Flexbox are both powerful layout systems, but they serve different purposes...",
+    "tags": ["CSS", "Layout", "Grid", "Flexbox"]
+  }
+}

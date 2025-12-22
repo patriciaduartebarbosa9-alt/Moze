@@ -1,0 +1,13 @@
+{
+  "title": "Building APIs with Node.js",
+  "article": {
+    "title": "Building APIs with Node.js",
+    "subtitle": "A comprehensive guide to RESTful API development",
+    "date": "2025-01-10",
+    "category": "Node.js",
+    "readTime": "8 min read",
+    "author": "Arlindo Santos",
+    "content": "Node.js provides an excellent platform for building scalable APIs. In this tutorial, we'll explore best practices...",
+    "tags": ["Node.js", "API", "Backend", "Express.js"]
+  }
+}

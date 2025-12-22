@@ -1,0 +1,48 @@
+{
+  "title": "About Me",
+  "subtitle": "Get to know more about my journey and skills",
+  "story": [
+    "I'm a passionate developer with a love for creating innovative solutions and beautiful user experiences. My journey in technology started several years ago, and I've been constantly learning and growing ever since.",
+    "I specialize in full-stack development, with expertise in both frontend and backend technologies. I believe in writing clean, maintainable code and following industry best practices."
+  ],
+  "skills": {
+    "frontend": [
+      "HTML5 & CSS3",
+      "JavaScript (ES6+)",
+      "React.js",
+      "Vue.js"
+    ],
+    "backend": [
+      "Node.js",
+      "Express.js",
+      "Python",
+      "Database Design"
+    ],
+    "tools": [
+      "Git & GitHub",
+      "Docker",
+      "AWS",
+      "Agile Methodology"
+    ]
+  },
+  "experience": [
+    {
+      "position": "Senior Full Stack Developer",
+      "company": "Tech Company Inc.",
+      "period": "2022 - Present",
+      "description": "Led development of multiple web applications, mentored junior developers, and implemented best practices for code quality and deployment processes."
+    },
+    {
+      "position": "Frontend Developer",
+      "company": "Digital Agency Ltd.",
+      "period": "2020 - 2022",
+      "description": "Developed responsive websites and web applications using modern frameworks, collaborated with design teams, and optimized user experiences."
+    },
+    {
+      "position": "Computer Science Degree",
+      "company": "University of Technology",
+      "period": "2016 - 2020",
+      "description": "Bachelor's degree in Computer Science with focus on software engineering, data structures, algorithms, and web technologies."
+    }
+  ]
+}

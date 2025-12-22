@@ -1,0 +1,35 @@
+{
+  "title": "Contact",
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's discuss your next project or collaboration opportunity",
+    "message": "I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out!",
+    "info": [
+      {
+        "icon": "fas fa-envelope",
+        "label": "Email",
+        "value": "arlindo@example.com"
+      },
+      {
+        "icon": "fas fa-phone",
+        "label": "Phone",
+        "value": "+351 123 456 789"
+      },
+      {
+        "icon": "fas fa-map-marker-alt",
+        "label": "Location",
+        "value": "Portugal"
+      }
+    ],
+    "form": {
+      "title": "Send a Message",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "button": "Send Message"
+    }
+  }
+}

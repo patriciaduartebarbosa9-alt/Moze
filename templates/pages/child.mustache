@@ -1,0 +1,39 @@
+
+{{< parent}}
+
+{{$title}}Child Page - Custom Title{{/title}}
+
+{{$header}}
+<h1>Custom Child Header</h1>
+<nav>
+  <a href="/">Home</a> | 
+  <a href="/about">About</a> | 
+  <a href="/contact">Contact</a>
+</nav>
+{{/header}}
+
+{{$main}}
+       
+<h2>Child Main Content</h2>
+<p>This is custom content for the child page, completely overriding the parent's main block.</p>
+<div class="child-specific">
+  <h3>Child Features</h3>
+  <ul>
+    <li>Custom navigation</li>
+    <li>Override blocks</li>
+    <li>Template inheritance</li>
+  </ul>
+</div>
+{{/main}}
+
+{{$footer}}
+<p>© 2025 Child Template - Custom Footer Content</p>
+<small>Generated with block override system</small>
+{{/footer}}
+
+{{$scripts}}
+<script>
+  console.log('Child template scripts loaded');
+  
+</script>
+{{/scripts}}

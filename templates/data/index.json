@@ -1,0 +1,33 @@
+{
+  "title": "Home",
+  "hero": {
+    "title": "Welcome to My Portfolio",
+    "subtitle": "Full Stack Developer & Creative Problem Solver",
+    "buttons": {
+      "projects": "View My Work",
+      "contact": "Get In Touch"
+    }
+  },
+  "features": [
+    {
+      "icon": "fas fa-code",
+      "title": "Web Development",
+      "description": "Creating responsive and modern web applications using the latest technologies and best practices for optimal user experience."
+    },
+    {
+      "icon": "fas fa-mobile-alt",
+      "title": "Mobile Development",
+      "description": "Building cross-platform mobile applications with React Native and Flutter for both iOS and Android platforms."
+    },
+    {
+      "icon": "fas fa-database",
+      "title": "Backend Development",
+      "description": "Designing and implementing robust APIs, databases, and server-side solutions using modern technologies and best practices."
+    }
+  ],
+  "cta": {
+    "title": "Ready to Start a Project?",
+    "description": "Let's work together to bring your ideas to life",
+    "button": "Start Conversation"
+  }
+}

@@ -1,0 +1,41 @@
+{{<layout}}
+{{$main}}
+<section class="hero">
+    <div class="hero-content">
+        <div>
+            <h1 class="hero-title">{{hero.title}}</h1>
+            <p class="hero-subtitle">{{hero.subtitle}}</p>
+            <div class="hero-buttons">
+                <a href="./projects.html" class="btn btn-primary">{{hero.buttons.projects}}</a>
+                <a href="./contact.html" class="btn btn-secondary">{{hero.buttons.contact}}</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/assets/images/hero.png" alt="Hero Image">
+        </div>
+        <div class="profile-placeholder">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">What I Do</h2>
+        <div class="features-grid">
+            {{#features}}
+            {{> feature-card}}
+            {{/features}}
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <h2>{{cta.title}}</h2>
+        <p>{{cta.description}}</p>
+        <a href="./contact.html" class="btn btn-primary">{{cta.button}}</a>
+    </div>
+</section>
+{{/main}}
+{{/layout}}

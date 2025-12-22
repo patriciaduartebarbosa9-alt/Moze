@@ -1,0 +1,37 @@
+{
+  "site": {
+    "title": "Arlindo Santos",
+    "description": "Full Stack Developer & Creative Problem Solver",
+    "author": "Arlindo Santos"
+  },
+  "hero": {
+    "title": "Hi, I'm Arlindo Santos",
+    "subtitle": "Full Stack Developer & Creative Problem Solver",
+    "buttons": {
+      "projects": "View My Work",
+      "contact": "Get In Touch"
+    }
+  },
+  "features": [
+    {
+      "icon": "fas fa-code",
+      "title": "Web Development",
+      "description": "Building modern, responsive websites and web applications using the latest technologies."
+    },
+    {
+      "icon": "fas fa-mobile-alt",
+      "title": "Mobile Apps",
+      "description": "Creating cross-platform mobile applications with native performance and user experience."
+    },
+    {
+      "icon": "fas fa-server",
+      "title": "Backend Development",
+      "description": "Developing robust APIs and server-side applications with scalable architecture."
+    }
+  ],
+  "cta": {
+    "title": "Ready to Start Your Project?",
+    "description": "Let's work together to bring your ideas to life. Contact me today to discuss your next project.",
+    "button": "Start Project"
+  }
+}

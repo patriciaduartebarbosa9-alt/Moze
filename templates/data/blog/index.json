@@ -1,0 +1,34 @@
+{
+  "title": "Blog",
+  "blog": {
+    "title": "Latest Articles",
+    "subtitle": "Thoughts, tutorials, and insights about web development",
+    "description": "Welcome to my blog where I share knowledge about web development, programming best practices, and technology trends."
+  },
+  "posts": [
+    {
+      "title": "Getting Started with React 18",
+      "excerpt": "Learn about the new features in React 18 and how to upgrade your applications.",
+      "date": "2025-01-15",
+      "category": "React",
+      "readTime": "5 min read",
+      "url": "blog/1/1"
+    },
+    {
+      "title": "Building APIs with Node.js",
+      "excerpt": "A comprehensive guide to creating RESTful APIs using Node.js and Express.",
+      "date": "2025-01-10",
+      "category": "Node.js",
+      "readTime": "8 min read",
+      "url": "blog/1/2"
+    },
+    {
+      "title": "CSS Grid vs Flexbox",
+      "excerpt": "Understanding when to use CSS Grid and when to use Flexbox for layout.",
+      "date": "2025-01-05",
+      "category": "CSS",
+      "readTime": "6 min read",
+      "url": "blog/article"
+    }
+  ]
+}

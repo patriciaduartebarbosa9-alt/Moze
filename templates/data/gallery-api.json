@@ -1,0 +1,24 @@
+{
+  "title": "Image Gallery API",
+  "meta_description": "Browse through a stunning image gallery showcasing our latest projects.",
+  "meta_keywords": "image gallery, projects, portfolio, slider",
+  "meta_author": "Arlindo Santos",
+  "meta_robots": "index,follow",
+  "meta_canonical": "https://yourdomain.com/gallery.html",
+  "meta_og_title": "Image Gallery",
+  "meta_og_description": "A stunning slider gallery featuring our top projects.",
+  "meta_og_image": "https://yourdomain.com/assets/images/project1.svg",
+  "meta_og_url": "https://yourdomain.com/gallery.html",
+  "meta_og_type": "website",
+  "meta_twitter_card": "summary_large_image",
+  "meta_twitter_title": "Image Gallery",
+  "meta_twitter_description": "Explore our portfolio with a dynamic image slider gallery.",
+  "meta_twitter_image": "https://yourdomain.com/assets/images/project1.svg",
+   "styles": [
+      "/assets/css/gallery-slider.css"
+    ],
+    "scripts": [
+      "/assets/js/gallery-api.js"
+    ]
+  
+}

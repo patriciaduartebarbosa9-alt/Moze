@@ -1,0 +1,13 @@
+{
+  "title": "Getting Started with React 18",
+  "article": {
+    "title": "Getting Started with React 18",
+    "subtitle": "Learn about the new features and improvements",
+    "date": "2025-01-15",
+    "category": "React",
+    "readTime": "5 min read",
+    "author": "Arlindo Santos",
+    "content": "React 18 introduces several new features and improvements that make building user interfaces even better...",
+    "tags": ["React", "JavaScript", "Frontend", "Web Development"]
+  }
+}

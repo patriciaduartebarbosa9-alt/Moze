@@ -1,0 +1,40 @@
+{{< layout}}
+{{$main}}
+<section class="page-header">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <p>{{subtitle}}</p>
+    </div>
+</section>
+
+<section class="about-content">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>My Story</h2>
+                {{#story}}
+                <p>{{.}}</p>
+                {{/story}}
+                
+                {{> skills-section}}
+            </div>
+            <div class="about-image">
+                <div class="about-image-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="experience">
+    <div class="container">
+        <h2 class="section-title">Experience & Education</h2>
+        <div class="timeline">
+            {{#experience}}
+            {{> timeline-item}}
+            {{/experience}}
+        </div>
+    </div>
+</section>
+{{/main}}
