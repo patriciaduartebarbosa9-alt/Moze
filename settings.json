@@ -1,0 +1,10 @@
+{
+  "siteUrl": "",
+  "mustache.compiler": {
+    "templates": "templates/pages",
+    "layouts": "templates/layouts",
+    "partials": "templates/partials",
+    "data": "templates/data",
+    "createDirectories": true
+   }
+}

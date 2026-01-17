@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>MOZE | Perfil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">Moze</div>
+
+  <nav class="nav">
+    <a href="index.html" data-page="index" data-root="true">Página Inicial</a>
+    <a href="reservar.html" data-page="reservar" data-root="true">Reservar</a>
+    <a href="mensagens.html" data-page="mensagens" data-root="true">Mensagens</a>
+    <a href="blog/index.html" data-page="blog" data-root="true">Blog</a>
+    <a href="homepage.html" data-page="about" data-root="true">Sobre Nós</a>
+  </nav>
+
+  <a href="perfil.html" class="profile" aria-label="Perfil" data-root="true">
+    <img id="profile-pic-header" src="https://i.pravatar.cc/64?img=12" alt="Perfil" class="profile-avatar" style="width: 48px; height: 48px; object-fit: cover; border-radius: 50%;" />
+  </a>
+</header>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3X01JRQKCT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3X01JRQKCT');
+</script>
+
+<script>
+  // Ajustar links do header baseado na profundidade do directório
+  (function() {
+    const pathname = window.location.pathname;
+    const depth = pathname.split('/').filter(p => p && p !== 'Moze').length - 1;
+    
+    if (depth > 0) {
+      const prefix = '../'.repeat(depth);
+      document.querySelectorAll('[data-root="true"]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('/')) {
+          link.setAttribute('href', prefix + href);
+        }
+      });
+    }
+  })();
+</script>
+
+<main class="profile-page">
+
+  <!-- PERFIL -->
+  <section class="profile-card">
+    <img src="https://i.pravatar.cc/80?img=32" class="avatar" alt="Avatar">
+
+    <div class="profile-info">
+      <h2>Rodrigo Silva</h2>
+      <p>Fotógrafo Profissional Especializado em Casamentos e Eventos</p>
+      <div class="meta">
+        <span>⭐ 4.9 (127 avaliações)</span>
+        <span>Mirandela, Portugal</span>
+      </div>
+    </div>
+
+    <button class="edit-btn" onclick="window.location.href='edit-profile.html'">Editar Perfil</button>
+  </section>
+
+  <!-- TABS -->
+  <section class="tabs">
+    <button class="tab-btn active" data-tab="portfolio">Portfólio</button>
+    <button class="tab-btn" data-tab="servicos">Serviços</button>
+    <button class="tab-btn" data-tab="avaliacoes">Avaliações</button>
+  </section>
+
+  <!-- CONTEÚDO DAS TABS -->
+  <section class="tab-content">
+
+    <!-- PORTFÓLIO -->
+    <div id="portfolio" class="tab-panel active">
+      <button class="edit-btn" data-edit="portfolio">Editar Portfólio</button>
+      <div class="portfolio">
+        <img src="https://picsum.photos/400/400?1">
+        <img src="https://picsum.photos/400/400?2">
+        <img src="https://picsum.photos/400/400?3">
+        <img src="https://picsum.photos/400/400?4">
+        <img src="https://picsum.photos/400/400?5">
+        <img src="https://picsum.photos/400/400?6">
+      </div>
+    </div>
+
+    <!-- SERVIÇOS -->
+    <div id="servicos" class="tab-panel">
+      <button class="edit-btn" data-edit="servicos">Editar Serviços</button>
+      <ul class="services">
+        <li>📸 Casamentos</li>
+        <li>🎉 Eventos</li>
+        <li>🧑‍💼 Retratos Profissionais</li>
+        <li>🏢 Fotografia Corporativa</li>
+      </ul>
+    </div>
+
+    <!-- AVALIAÇÕES -->
+    <div id="avaliacoes" class="tab-panel">
+      <div class="review">
+        <p>Excelente profissional, super atento.</p>
+        <span>— Ana Silva</span>
+      </div>
+      <div class="review">
+        <p>Fotos incríveis, recomendo.</p>
+        <span>— João Costa</span>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="assets/js/perfil.js"></script>
+</body>
+</html>

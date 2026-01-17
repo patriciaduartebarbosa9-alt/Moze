@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern JavaScript Frameworks</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="author" content="">
-        <meta name="robots" content="">
-        <link rel="canonical" href="">
-        <meta property="og:title" content="">
-        <meta property="og:description" content="">
-        <meta property="og:image" content="">
-        <meta property="og:url" content="">
-        <meta property="og:type" content="">
-        <meta name="twitter:card" content="">
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
+    <title>Image Gallery</title>
+        <meta name="description" content="Browse through a stunning image gallery showcasing our latest projects.">
+        <meta name="keywords" content="image gallery, projects, portfolio, slider">
+        <meta name="author" content="Arlindo Santos">
+        <meta name="robots" content="index,follow">
+        <link rel="canonical" href="https://yourdomain.com/gallery.html">
+        <meta property="og:title" content="Image Gallery">
+        <meta property="og:description" content="A stunning slider gallery featuring our top projects.">
+        <meta property="og:image" content="https://yourdomain.com/assets/images/project1.svg">
+        <meta property="og:url" content="https://yourdomain.com/gallery.html">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Image Gallery">
+        <meta name="twitter:description" content="Explore our portfolio with a dynamic image slider gallery.">
+        <meta name="twitter:image" content="https://yourdomain.com/assets/images/project1.svg">
     <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
     <link rel="stylesheet" href="../assets/css/styles.css">
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../assets/css/reservar_novo.css">
     <link rel="stylesheet" href="../assets/css/auth.css">
     
+     <link rel="stylesheet" href="/assets/css/gallery-slider.css">
        
     
   </head>
@@ -76,21 +77,33 @@
     
     <main>
         
-<section class="page-header">
-    <div class="container">
-        <h1>Very Deep Nested Page</h1>
-        <p>Testing very deep nesting: blog/2025/articles/sample</p>
+<div >
+  <p>Ver versao da galeria AOI e json e JQuery - <a href="/gallery-api.html">AQUI</a></p>
+  <p>Ver mais outra versao da galeria AOI e json e JQuery - <a href="/gallery-api-1.html">AQUI</a></p>
+<div class="slider-container">
+  <div id="slider">
+    <div class="slide">
+      <img src="./assets/images/project1.svg" alt="Project 1">
     </div>
-</section>
-
-<section class="article-content">
-    <div class="container">
-        <article class="blog-article">
-            <h2>Deep Nested Article</h2>
-            <p>This is a test of very deep nesting to show recursive scanning works.</p>
-        </article>
+    <div class="slide">
+      <img src="./assets/images/project2.svg" alt="Project 2">
     </div>
-</section>
+    <div class="slide">
+      <img src="./assets/images/project3.svg" alt="Project 3">
+    </div>
+    <div class="slide">
+      <img src="/assets/images/project4.svg" alt="Project 4">
+    </div>
+    <div class="slide">
+      <img src="./assets/images/project5.svg" alt="Project 5">
+    </div>
+    <div class="slide">
+      <img src="./assets/images/project6.svg" alt="Project 6">
+    </div>
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
 
     </main>
     
@@ -131,6 +144,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.0/mustache.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/reservar_novo.js"></script>
+     <script src="/assets/js/gallery-slider.js" crossorigin="anonymous"></script>
        
       
    </body>
