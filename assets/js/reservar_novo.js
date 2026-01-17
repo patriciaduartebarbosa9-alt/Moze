@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Verificar se concelhoSelect existe
+  if (!concelhoSelect) {
+    console.warn('Elemento "concelho" não encontrado na página');
+    return;
+  }
+
   // Evento para atualizar concelhos
   distritoSelect.addEventListener('change', function () {
     const selectedDistrito = this.value;

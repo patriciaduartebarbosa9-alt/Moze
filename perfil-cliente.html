@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - Cliente - MOZE</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3X01JRQKCT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3X01JRQKCT');
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Moze</div>
+  
+    <nav class="nav">
+      <a href="index.html" data-page="index" data-root="true">Página Inicial</a>
+      <a href="reservar.html" data-page="reservar" data-root="true">Reservar</a>
+      <a href="mensagens.html" data-page="mensagens" data-root="true">Mensagens</a>
+      <a href="blog/index.html" data-page="blog" data-root="true">Blog</a>
+      <a href="homepage.html" data-page="about" data-root="true">Sobre Nós</a>
+    </nav>
+  
+    <div class="profile-menu-container">
+      <button class="profile-btn" id="profile-btn" aria-label="Menu de Perfil">
+        <img id="profile-pic-header" src="https://i.pravatar.cc/64?img=12" alt="Perfil" class="profile-avatar" style="width: 48px; height: 48px; object-fit: cover; border-radius: 50%;" />
+      </button>
+      
+      <div class="profile-dropdown" id="profile-dropdown">
+        <a href="perfil.html" class="dropdown-item" data-root="true">👤 Ver Perfil</a>
+        <a href="definicoes.html" class="dropdown-item" data-root="true">⚙️ Definições</a>
+        <hr style="margin: 5px 0;">
+        <button id="btn-delete-account" class="dropdown-item btn-danger-dropdown">🗑️ Apagar Conta</button>
+        <button id="btn-logout" class="dropdown-item btn-logout-dropdown">🚪 Terminar Sessão</button>
+      </div>
+    </div>
+  </header>
+  
+  <script>
+    // Menu de Perfil
+    (function() {
+      const profileBtn = document.getElementById('profile-btn');
+      const profileDropdown = document.getElementById('profile-dropdown');
+      
+      // Toggle menu ao clicar na imagem
+      profileBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        profileDropdown.classList.toggle('active');
+      });
+      
+      // Fechar menu ao clicar fora
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.profile-menu-container')) {
+          profileDropdown.classList.remove('active');
+        }
+      });
+      
+      // Logout
+      document.getElementById('btn-logout').addEventListener('click', function() {
+        if(confirm('Tem a certeza que deseja sair?')) {
+          fetch('../api/logout.php', { method: 'POST' })
+            .then(() => {
+              localStorage.clear();
+              window.location.href = 'login.html';
+            });
+        }
+      });
+      
+      // Apagar conta
+      document.getElementById('btn-delete-account').addEventListener('click', function() {
+        if(confirm('⚠️ AVISO: Esta ação é irreversível. Tem a certeza que deseja apagar a sua conta?')) {
+          const userId = localStorage.getItem('userId');
+          fetch('../api/delete_account.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: userId })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if(data.status === 'success') {
+              alert('Conta eliminada com sucesso');
+              localStorage.clear();
+              window.location.href = 'login.html';
+            } else {
+              alert('Erro ao apagar conta: ' + data.message);
+            }
+          });
+        }
+      });
+      
+      // Ajustar links do header baseado na profundidade do directório
+      const pathname = window.location.pathname;
+      const depth = pathname.split('/').filter(p => p && p !== 'Moze').length - 1;
+      
+      if (depth > 0) {
+        const prefix = '../'.repeat(depth);
+        document.querySelectorAll('[data-root="true"]').forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && !href.startsWith('http') && !href.startsWith('/')) {
+            link.setAttribute('href', prefix + href);
+          }
+        });
+      }
+    })();
+  </script>
+  
+<main>
+<!-- Perfil do Cliente -->
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="profile-banner"></div>
+    <div class="profile-info">
+      <img id="profile-avatar" src="https://i.pravatar.cc/64?img=12" alt="Avatar" class="avatar">
+      <div class="profile-details">
+        <h1 id="profile-name">Nome do Cliente</h1>
+        <p id="profile-email" class="profile-email">email@example.com</p>
+        <p id="profile-phone" class="profile-phone">+351 91 234 5678</p>
+      </div>
+      <a href="edit-profile-cliente.html" class="btn-edit">Editar Perfil</a>
+    </div>
+  </div>
+
+  <!-- Tabs de Navegação -->
+  <div class="profile-tabs">
+    <button class="tab-btn active" data-tab="historico">Histórico de Reservas</button>
+    <button class="tab-btn" data-tab="avaliacoes">Minhas Avaliações</button>
+    <button class="tab-btn" data-tab="favoritos">Fotógrafos Favoritos</button>
+    <button class="tab-btn" data-tab="configuracoes">Configurações</button>
+  </div>
+
+  <!-- Tab 1: Histórico de Reservas -->
+  <div id="historico" class="tab-panel active">
+    <h2>Histórico de Reservas</h2>
+    <div id="reservas-list" class="reservas-grid">
+      <!-- Carregado via JavaScript -->
+      <p class="empty-state">Carregando reservas...</p>
+    </div>
+  </div>
+
+  <!-- Tab 2: Minhas Avaliações -->
+  <div id="avaliacoes" class="tab-panel">
+    <h2>Avaliações que Deixei</h2>
+    <div id="avaliacoes-list" class="avaliacoes-list">
+      <!-- Carregado via JavaScript -->
+      <p class="empty-state">Carregando avaliações...</p>
+    </div>
+  </div>
+
+  <!-- Tab 3: Fotógrafos Favoritos -->
+  <div id="favoritos" class="tab-panel">
+    <h2>Fotógrafos Favoritos</h2>
+    <div id="favoritos-list" class="fotografos-grid">
+      <!-- Carregado via JavaScript -->
+      <p class="empty-state">Carregando favoritos...</p>
+    </div>
+  </div>
+
+  <!-- Tab 4: Configurações -->
+  <div id="configuracoes" class="tab-panel">
+    <h2>Configurações da Conta</h2>
+    <div class="settings-form">
+      <div class="form-group">
+        <label for="notificacoes">Receber Notificações</label>
+        <input type="checkbox" id="notificacoes" checked>
+      </div>
+      <div class="form-group">
+        <label for="privacidade">Perfil Público</label>
+        <input type="checkbox" id="privacidade" checked>
+      </div>
+      <button id="btn-logout" class="btn btn-danger">Sair da Conta</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-header {
+  background: #f8f9fa;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.profile-banner {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: -60px;
+  position: relative;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid white;
+  object-fit: cover;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.profile-details h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.profile-email,
+.profile-phone {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.btn-edit {
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-edit:hover {
+  background: #764ba2;
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.tab-btn:hover {
+  color: #333;
+}
+
+.tab-btn.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-panel h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+.reservas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.reserva-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s;
+}
+
+.reserva-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+}
+
+.reserva-fotografo {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.reserva-data {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.reserva-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.status-confirmada {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-pendente {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-concluida {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.avaliacoes-list {
+  display: grid;
+  gap: 20px;
+}
+
+.avaliacao-item {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.avaliacao-fotografo {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.avaliacao-texto {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.fotografos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.fotografo-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.fotografo-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+}
+
+.fotografo-header {
+  padding: 15px;
+  text-align: center;
+  background: #f8f9fa;
+}
+
+.fotografo-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.fotografo-nome {
+  font-weight: bold;
+  color: #333;
+}
+
+.fotografo-footer {
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-small {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.btn-remove {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-remove:hover {
+  background: #f5c6cb;
+}
+
+.settings-form {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 500px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.form-group:last-child {
+  border-bottom: none;
+}
+
+.form-group label {
+  flex: 1;
+  cursor: pointer;
+  color: #333;
+}
+
+.form-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetTab = this.getAttribute('data-tab');
+      
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      
+      this.classList.add('active');
+      document.getElementById(targetTab).classList.add('active');
+    });
+  });
+
+  // Carregar dados do cliente
+  loadClientProfile();
+  loadReservas();
+  loadAvaliacoes();
+  loadFavoritos();
+
+  // Logout
+  document.getElementById('btn-logout').addEventListener('click', function() {
+    if(confirm('Tem a certeza que deseja sair?')) {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    }
+  });
+});
+
+function loadClientProfile() {
+  const clientId = localStorage.getItem('userId');
+  if (!clientId) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  // Carregar dados do cliente
+  const clientData = localStorage.getItem('clientData');
+  if (clientData) {
+    const data = JSON.parse(clientData);
+    document.getElementById('profile-name').textContent = data.nome || 'Cliente';
+    document.getElementById('profile-email').textContent = data.email || '';
+    document.getElementById('profile-phone').textContent = data.telefone || '';
+    
+    if (data.foto) {
+      document.getElementById('profile-avatar').src = data.foto;
+    }
+  }
+}
+
+function loadReservas() {
+  const clientId = localStorage.getItem('userId');
+  const reservasList = document.getElementById('reservas-list');
+
+  fetch('../api/get_minhas_reservas.php?cliente_id=' + clientId)
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success' && data.reservas.length > 0) {
+        reservasList.innerHTML = data.reservas.map(reserva => `
+          <div class="reserva-card">
+            <div class="reserva-fotografo">${reserva.fotografo_nome}</div>
+            <div class="reserva-data">📅 ${new Date(reserva.data_reserva).toLocaleDateString('pt-PT')}</div>
+            <div class="reserva-data">⏰ ${reserva.hora_inicio} - ${reserva.hora_fim}</div>
+            <div class="reserva-data">📍 ${reserva.local || 'Não especificado'}</div>
+            <span class="reserva-status status-${reserva.status.toLowerCase()}">${reserva.status}</span>
+          </div>
+        `).join('');
+      } else {
+        reservasList.innerHTML = '<p class="empty-state">Ainda não tem reservas. <a href="reservar.html">Fazer uma reserva</a></p>';
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao carregar reservas:', error);
+      reservasList.innerHTML = '<p class="empty-state">Erro ao carregar reservas</p>';
+    });
+}
+
+function loadAvaliacoes() {
+  const clientId = localStorage.getItem('userId');
+  const avaliacoesList = document.getElementById('avaliacoes-list');
+
+  fetch('../api/get_minhas_avaliacoes.php?cliente_id=' + clientId)
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success' && data.avaliacoes.length > 0) {
+        avaliacoesList.innerHTML = data.avaliacoes.map(avaliacao => `
+          <div class="avaliacao-item">
+            <div class="avaliacao-fotografo">${avaliacao.fotografo_nome}</div>
+            <div class="stars">${'⭐'.repeat(avaliacao.nota)}</div>
+            <div class="avaliacao-texto">"${avaliacao.comentario}"</div>
+            <div class="reserva-data">${new Date(avaliacao.data_avaliacao).toLocaleDateString('pt-PT')}</div>
+          </div>
+        `).join('');
+      } else {
+        avaliacoesList.innerHTML = '<p class="empty-state">Ainda não deixou avaliações</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao carregar avaliações:', error);
+      avaliacoesList.innerHTML = '<p class="empty-state">Erro ao carregar avaliações</p>';
+    });
+}
+
+function loadFavoritos() {
+  const clientId = localStorage.getItem('userId');
+  const favoritosList = document.getElementById('favoritos-list');
+
+  fetch('../api/get_favoritos.php?cliente_id=' + clientId)
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success' && data.favoritos.length > 0) {
+        favoritosList.innerHTML = data.favoritos.map(fav => `
+          <div class="fotografo-card">
+            <div class="fotografo-header">
+              <img src="${fav.foto || 'https://i.pravatar.cc/64?img=1'}" alt="${fav.nome}" class="fotografo-avatar">
+              <div class="fotografo-nome">${fav.nome}</div>
+              <div class="stars">${'⭐'.repeat(fav.media_avaliacoes || 5)}</div>
+            </div>
+            <div class="fotografo-footer">
+              <button class="btn-small" onclick="goToPhotographer(${fav.fotografo_id})">Ver Perfil</button>
+              <button class="btn-small btn-remove" onclick="removeFavorito(${fav.fotografo_id})">Remover</button>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        favoritosList.innerHTML = '<p class="empty-state">Ainda não tem fotógrafos favoritos</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao carregar favoritos:', error);
+      favoritosList.innerHTML = '<p class="empty-state">Erro ao carregar favoritos</p>';
+    });
+}
+
+function goToPhotographer(fotografoId) {
+  // Redirecionar para perfil do fotógrafo
+  window.location.href = `perfil-fotografo.html?id=${fotografoId}`;
+}
+
+function removeFavorito(fotografoId) {
+  if (confirm('Tem a certeza que deseja remover dos favoritos?')) {
+    const clientId = localStorage.getItem('userId');
+    fetch('../api/remove_favorito.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        cliente_id: clientId,
+        fotografo_id: fotografoId
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        loadFavoritos();
+      }
+    });
+  }
+}
+</script>
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <h2></h2>
+    </div>
+
+
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

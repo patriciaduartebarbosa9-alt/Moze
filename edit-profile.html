@@ -20,14 +20,74 @@
     <a href="homepage.html" data-page="about" data-root="true">Sobre Nós</a>
   </nav>
 
-  <a href="perfil.html" class="profile" aria-label="Perfil" data-root="true">
-    <img id="profile-pic-header" src="https://i.pravatar.cc/64?img=12" alt="Perfil" class="profile-avatar" style="width: 48px; height: 48px; object-fit: cover; border-radius: 50%;" />
-  </a>
+  <div class="profile-menu-container">
+    <button class="profile-btn" id="profile-btn" aria-label="Menu de Perfil">
+      <img id="profile-pic-header" src="https://i.pravatar.cc/64?img=12" alt="Perfil" class="profile-avatar" style="width: 48px; height: 48px; object-fit: cover; border-radius: 50%;" />
+    </button>
+    
+    <div class="profile-dropdown" id="profile-dropdown">
+      <a href="perfil.html" class="dropdown-item" data-root="true">👤 Ver Perfil</a>
+      <a href="definicoes.html" class="dropdown-item" data-root="true">⚙️ Definições</a>
+      <hr style="margin: 5px 0;">
+      <button id="btn-delete-account" class="dropdown-item btn-danger-dropdown">🗑️ Apagar Conta</button>
+      <button id="btn-logout" class="dropdown-item btn-logout-dropdown">🚪 Terminar Sessão</button>
+    </div>
+  </div>
 </header>
 
 <script>
-  // Ajustar links do header baseado na profundidade do directório
+  // Menu de Perfil
   (function() {
+    const profileBtn = document.getElementById('profile-btn');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    
+    // Toggle menu ao clicar na imagem
+    profileBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      profileDropdown.classList.toggle('active');
+    });
+    
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.profile-menu-container')) {
+        profileDropdown.classList.remove('active');
+      }
+    });
+    
+    // Logout
+    document.getElementById('btn-logout').addEventListener('click', function() {
+      if(confirm('Tem a certeza que deseja sair?')) {
+        fetch('../api/logout.php', { method: 'POST' })
+          .then(() => {
+            localStorage.clear();
+            window.location.href = 'login.html';
+          });
+      }
+    });
+    
+    // Apagar conta
+    document.getElementById('btn-delete-account').addEventListener('click', function() {
+      if(confirm('⚠️ AVISO: Esta ação é irreversível. Tem a certeza que deseja apagar a sua conta?')) {
+        const userId = localStorage.getItem('userId');
+        fetch('../api/delete_account.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userId })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if(data.status === 'success') {
+            alert('Conta eliminada com sucesso');
+            localStorage.clear();
+            window.location.href = 'login.html';
+          } else {
+            alert('Erro ao apagar conta: ' + data.message);
+          }
+        });
+      }
+    });
+    
+    // Ajustar links do header baseado na profundidade do directório
     const pathname = window.location.pathname;
     const depth = pathname.split('/').filter(p => p && p !== 'Moze').length - 1;
     
