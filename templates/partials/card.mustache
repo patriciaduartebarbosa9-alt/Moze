@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <img src="{{avatar}}" alt="Fotógrafo">
+    <span>{{name}}</span>
+  </div>
+
+  <img src="{{image}}" class="card-img" alt="Fotografia">
+
+  <div class="card-info">
+    <p><strong>{{likes}} gostos</strong></p>
+    <p class="author">{{name}} · {{category}}</p>
+
+    {{#comments}}
+      <p class="comments">
+        <a href="detalhe.html?id={{id}}">
+          Ver todos os {{comments}} comentários
+        </a>
+      </p>
+    {{/comments}}
+  </div>
+</div>

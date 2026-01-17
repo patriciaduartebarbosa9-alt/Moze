@@ -33,5 +33,30 @@
     "title": "Ready to Start Your Project?",
     "description": "Let's work together to bring your ideas to life. Contact me today to discuss your next project.",
     "button": "Start Project"
+  },
+  "footer": {
+    "brand": "Moze Fotografias",
+    "columns": [
+      {
+        "title": "Links Úteis",
+        "links": {
+          "items": [
+            {"label": "Sobre Nós", "url": "/about"},
+            {"label": "Galeria", "url": "/gallery"},
+            {"label": "Contactos", "url": "/contact"}
+          ]
+        }
+      },
+      {
+        "title": "Redes Sociais",
+        "links": {
+          "items": [
+            {"label": "Instagram", "url": "#"},
+            {"label": "Facebook", "url": "#"},
+            {"label": "Twitter", "url": "#"}
+          ]
+        }
+      }
+    ]
   }
 }

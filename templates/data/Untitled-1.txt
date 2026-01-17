@@ -1,0 +1,14 @@
+c:\Users\35191\.vscode\extensions\ruakr.ftp-kr-1.4.5
+
+[ftp-kr Reporting]
+platform: win32
+arch: x64
+
+[Error]
+message: extension-output-ruakr.ftp-kr-#2-ftp-kr\Moze is not in workspace
+
+[Stack Trace]
+Error: extension-output-ruakr.ftp-kr-#2-ftp-kr\Moze is not in workspace
+    at Workspace.fromFile (c:\Users\35191\.vscode\extensions\ruakr.ftp-kr-1.4.5\src\vsutil\ws.ts:160:31)
+    at runCommand (c:\Users\35191\.vscode\extensions\ruakr.ftp-kr-1.4.5\src\vsutil\cmd.ts:69:35)
+    at cA.h (file:///c:/Users/35191/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:116:41740)

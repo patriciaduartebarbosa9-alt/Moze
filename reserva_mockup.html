@@ -1,0 +1,246 @@
+<!--Reservar.html-->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reservar</title>
+  <link rel="stylesheet" href="css/Reservar.css" />
+</head>
+<body>
+    <!--menu
+  <header class="topbar">
+    <div class="logo">Moze</div>
+    <nav class="nav">
+      <a href="#">Página Inicial</a>
+      <a href="#">Reservar</a>
+      <a href="#">Blog</a>
+      <a href="#">Sobre Nós</a>
+    </nav>
+  </header>-->
+
+  <main>
+    <!-- Secção do formulário -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Encontre aqui o seu fotógrafo</h1>
+        <form id="search-form" class="search-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="distrito">Distrito</label>
+              <select id="distrito" required>
+                <option value="">Selecione um distrito</option>
+                <option value="aveiro">Aveiro</option>
+                <option value="beja">Beja</option>
+                <option value="braga">Braga</option>
+                <option value="braganca">Bragança</option>
+                <option value="castelobranco">Castelo Branco</option>
+                <option value="coimbra">Coimbra</option>
+                <option value="evora">Évora</option>
+                <option value="faro">Faro</option>
+                <option value="guarda">Guarda</option>
+                <option value="leiria">Leiria</option>
+                <option value="lisboa">Lisboa</option>
+                <option value="portalegre">Portalegre</option>
+                <option value="porto">Porto</option>
+                <option value="santarem">Santarém</option>
+                <option value="setubal">Setúbal</option>
+                <option value="vianacastelo">Viana do Castelo</option>
+                <option value="vilareal">Vila Real</option>
+                <option value="viseu">Viseu</option>
+                <option value="acores">Açores</option>
+                <option value="madeira">Madeira</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="concelho">Concelho</label>
+              <select id="concelho" required disabled>
+                <option value="">Selecione um concelho</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="data">Data</label>
+              <input type="date" id="data" required />
+            </div>
+            <div class="form-group">
+              <label for="hora">Hora</label>
+              <input type="time" id="hora" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" required>
+              <option value="">Selecione uma categoria</option>
+              <option value="casamentos">Casamentos</option>
+              <option value="eventos">Eventos</option>
+              <option value="retratos">Retratos</option>
+              <option value="produtos">Produtos</option> <!--pôr mais se houver-->
+            </select>
+          </div>
+
+          <button type="submit" class="btn-primary">Ver preços</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Secção dos fotografos(inicialmente escondida)-->
+    <section id="results-section" class="results hidden">
+      <h2>Fotógrafos disponíveis</h2>
+
+      <article class="card" data-distrito="braganca" data-concelho="braganca">
+        <div class="card-header">
+          <div>
+            <h3>Sofia Martins</h3>
+            <p class="location">Bragança</p>
+          </div>
+          <div class="rating">
+            ★ 4.2
+          </div>
+        </div>
+        <div class="card-gallery">
+          <div class="photo" style="background-image: url('imagens/ptf1.webp');"></div>
+          <div class="photo" style="background-image: url('imagens/ptf2.webp');"></div>
+          <div class="photo" style="background-image: url('imagens/ptf3.webp');"></div>
+          <div class="photo" style="background-image: url('imagens/ptf4.webp');"></div>
+        </div>
+        <button class="btn-secondary">Ver perfil</button>
+      </article>
+
+      <article class="card" data-distrito="braganca" data-concelho="mirandela">
+        <div class="card-header">
+          <div>
+            <h3>Rodrigo Silva</h3>
+            <p class="location">Mirandela</p>
+          </div>
+          <div class="rating">
+            ★ 4.9
+          </div>
+        </div>
+        <div class="card-gallery">
+          <div class="photo" style="background-image: url('imagens/ptf1.webp');"></div>
+          <div class="photo" style="background-image: url('imagens/ptf2.webp');"></div>
+          <div class="photo" style="background-image: url('imagens/ptf3.webp');"></div>
+          <div class="photo" style="background-image: url('imagens/ptf4.webp');"></div>
+        </div>
+        <button class="btn-secondary">Ver perfil</button>
+      </article>
+    </section>
+  </main>
+
+
+  <!--footer
+  <footer class="footer">
+    <div class="footer-brand">Moze</div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="#">Sobre nós</a>
+        <a href="#">Contactos</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos e Condições</a>
+      </div>
+      <div class="footer-col">
+        <h4>Redes Sociais</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+        <a href="#">LinkedIn</a>
+      </div>
+      <div class="footer-col">
+        <h4>Subscreva-se à nossa Newsletter</h4>
+        <form class="newsletter">
+          <input type="email" placeholder="Insira o seu e-mail" />
+          <button type="submit" class="btn-primary small">Subscrever</button>
+        </form>
+      </div>
+    </div>
+  </footer>-->
+
+  <script>
+    //distritos e seus concelhos
+    const concelhosMap = {
+      aveiro: ['Águeda', 'Albergaria-a-Velha', 'Anadia', 'Aveiro', 'Estarreja', 'Ílhavo', 'Murtosa', 'Oliveira do Bairro', 'Ovar', 'Sever do Vouga', 'Vagos', 'Espinho', 'Mealhada', 'Santa Maria da Feira', 'São João da Madeira', 'Arouca', 'Vale de Cambra'],
+      beja: ['Aljustrel', 'Almodovar', 'Alvito', 'Barrancos', 'Beja', 'Castro Verde', 'Cuba', 'Ferreira do Alentejo', 'Moura', 'Mértola', 'Odemira', 'Serpa', 'Vidigueira'],
+      braga: ['Amares', 'Barcelos', 'Braga', 'Cabeceiras de Basto', 'Celorico de Basto', 'Esposende', 'Fafe', 'Guimarães', 'Póvoa de Lanhoso', 'Terras de Bouro', 'Vieira do Minho', 'Vila Nova de Famalicão', 'Vila Verde',  'Vizela'],
+      braganca: ['Alfândega da Fé', 'Bragança', 'Carrazeda de Ansiães', 'Freixo de Espada à Cinta', 'Macedo de Cavaleiros', 'Mirando do Douro', 'Mirandela', 'Mogadouro', 'Torre de Moncorvo', 'Vila Flor', 'Vimioso', 'Vinhais'],
+      castelobranco: ['Belmonte', 'Castelo Branco', 'Covilhã', 'Fundão', 'Idanha-a-Nova', 'Oleiros', 'Penamacor', 'Proença-a-Nova', 'Sertã', 'Vila de Rei', 'Vila Velha de Ródão'], 
+      coimbra: ['Arganil', 'Cantanhede', 'Coimbra', 'Condeixa-a-Nova', 'Figueira da Foz', 'Góis', 'Lousã', 'Mealhada', 'Mira', 'Miranda do Corvo', 'Montemor-o-Velho', 'Mortágua', 'Oliveira do Hospital', 'Pampilhose da Serra', 'Penacova', 'Penela', 'Soure', 'Tábua', 'Vila Nova de Poiares'],
+      evora: ['Alandroal', 'Arraiolos', 'Borba', 'Évora', 'Estremoz', 'Montemor-o-Novo', 'Mora', 'Mourao', 'Portel', 'Redondo', 'Reguengos de Monsaraz', 'Vendas Novas', 'Viana do Alentejo', 'Vila Viçosa'],
+      faro: ['Albufeira', 'Alcoutim', 'Algarve', 'Aljezur', 'Castro Marim', 'Faro', 'Lagoa', 'Lagos', 'Loulé', 'Monchique', 'Olhão', 'Portimão', 'São Brás de Alportel', 'Silves', 'Tavira', 'Vila do Bispo', 'Vila Real de Santo António'],
+      guarda: ['Aguiar da Beira', 'Almeida', 'Celorico da Beira', 'Figueira de Castelo Rodrigo', 'Fornos de Algodres', 'Gouveia', 'Guarda', 'Manteigas', 'Mêda', 'Pinhel', 'Sabugal', 'Seia', 'Trancoso', 'Vila Nova de Foz Côa'],
+      leiria: ['Alcobaça', 'Alvaiázere', 'Ansião', 'Batalha', 'Bombarral', 'Caldas da Rainha', 'Castanheira de Pera', 'Fátima', 'Leiria', 'Marinha Grande', 'Nazaré', 'Óbidos', 'Pedrógão grande', 'Peniche', 'Pombal', 'Porto de Mós'],
+      lisboa: ['Alenquer', 'Amadora', 'Arruda dos Vinhos', 'Azambuja', 'Cadaval', 'Cascais', 'Lisboa', 'Loures', 'Lourinhã', 'Mafra', 'Odivelas', 'Oeiras', 'Sintra', 'Sobral de Monte Agraço', 'Torres Vedras', 'Vila Franca de Xira'],
+      portalegre: ['Alter do Chão', 'Arronches', 'Avis', 'Campo Maior', 'Castelo de Vide', 'Crato', 'Elvas', 'Fronteirs', 'Gravião', 'Marvão', 'Monforte', 'Nisa', 'Ponte de Sor', 'Portalegre', 'Ródão', 'Sousel'],
+      porto: ['Amarante', 'Baião', 'Felgueiras', 'Gondomar', 'Lousada', 'Maia', 'Marco de Canaveses', 'Matosinhos', 'Paços de Ferreira', 'Paredes', 'Penafiel', 'Porto', 'Póvoa de Varzim', 'Santo Tirso', 'São João da Madeira', 'Trofa', 'Valongo', 'Vila do Conde', 'Vila Nova de Gaia'],
+      santarem: ['Abrantes', 'Alcanena', 'Almeirim', 'Alpiarça', 'Benavente', 'Cartaxo', 'Chamusca', 'Constância', 'Coruche', 'Entroncamento', 'Ferreira do Zêzere', 'Golegã', 'Mação', 'Ourém', 'Rio Maior', 'Salvaterra de Magos', 'Santarém', 'Sardoal', 'Tomar', 'Torres Novas', 'Vila Nova da Barquinha'],
+      setubal: ['Alcácer do Sal', 'Alcochete', 'Almada', 'Barreiro', 'Grândola', 'Moita', 'Montijo', 'Palmela', 'Santiago do Cacém', 'Seixal', 'Setúbal', 'Sesimbra', 'Sines'],
+      vianacastelo: ['Arcos de Valdevez', 'Caminha', 'Melgaço', 'Monção', 'Paredes de Coura', 'Ponte da Barca', 'Ponte de Lima', 'Valença', 'Viana do Castelo', 'Vila Nova de Cerveira'],
+      vilareal: ['Alijó', 'Boticas', 'Chaves', 'Mesão Frio', 'Mondim de Basto', 'Montalegre', 'Murça', 'Peso da Régua', 'Ribeira de Pena', 'Sabrosa', 'Santa Marta de Penaguião', 'Valpaços', 'Vila Pouca de Aguiar', 'Vila Real'],
+      viseu: ['Armamar', 'Carregal do Sal', 'Castro Daire', 'Cinfães', 'Lamego', 'Mangualde', 'Moimenta da Beira', 'Mortágua', 'Nelas', 'Oliveira de Frades', 'Penalva do Castelo', 'Penedono', 'Resende', 'Santa Comba Dão', 'São João da Pesqueira', 'Sátão', 'Tarouca', 'Tondela', 'Vila Nova de Paiva', 'Viseu', 'Vouzela'],
+      acores: ['Angra do Heroísmo', 'Calheta', 'Corvo', 'Horta', 'Lagoa', 'Lajes das Flores', 'Lajes do Pico', 'Madalenia', 'Nordeste', 'Ponta Delgada', 'Praia da Vitória', 'Ribeira Grande', 'Velas', 'Vila do Porto', 'Vila Franca do Campo'],
+      madeira: ['Calheta', 'Câmara de Lobos', 'Funchal', 'Machico', 'Ponta do Sol', 'Porto Moniz', 'Porto Santo', 'Santa Cruz', 'Santana', 'São Vicente']
+    };
+
+    const distritoSelect = document.getElementById('distrito');
+    const concelhoSelect = document.getElementById('concelho');
+
+    // Evento para atualizar concelhos quando o distrito muda
+    distritoSelect.addEventListener('change', function () {
+      const selectedDistrito = this.value;
+      
+      //Limpar opçoes anteriores
+      concelhoSelect.innerHTML = '<option value="">Selecione um concelho</option>';
+      concelhoSelect.disabled = true;
+      
+      // Se foi selecionado um distrito, carregar os seus concelhos
+      if (selectedDistrito && concelhosMap[selectedDistrito]) {
+        const concelhos = concelhosMap[selectedDistrito];
+        concelhos.forEach(concelho => {
+          const option = document.createElement('option');
+          option.value = concelho.toLowerCase().replace(/\s+/g, '-');
+          option.textContent = concelho;
+          concelhoSelect.appendChild(option);
+        });
+        concelhoSelect.disabled = false;
+      }
+    });
+
+    const form = document.getElementById('search-form');
+    const resultsSection = document.getElementById('results-section');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const distrito = document.getElementById('distrito').value.trim();
+      const concelho = document.getElementById('concelho').value.trim();
+      const data = document.getElementById('data').value;
+      const hora = document.getElementById('hora').value;
+      const categoria = document.getElementById('categoria').value;
+
+      if (!distrito || !concelho || !data || !hora || !categoria) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Filtrar os cards baseado no distrito e concelho selecionados
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const cardDistrito = card.getAttribute('data-distrito');
+        const cardConcelho = card.getAttribute('data-concelho');
+        
+        if (cardDistrito === distrito && cardConcelho === concelho) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      resultsSection.classList.remove('hidden');
+      resultsSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

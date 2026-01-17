@@ -20,77 +20,75 @@
         <meta name="twitter:image" content="https://yourdomain.com/assets/images/project1.svg">
     <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
-    <link rel="stylesheet" href="http://localhost/Mustache-website/assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/homepage.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+    <link rel="stylesheet" href="../assets/css/reservar_novo.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
     
-     <link rel="stylesheet" href="http://localhost/Mustache-website/assets/css/gallery-slider.css">
+     <link rel="stylesheet" href="/assets/css/gallery-slider.css">
        
     
   </head>
 <body>
     <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="http://localhost/Mustache-website/index.html">Arlindo Santos</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="http://localhost/Mustache-website/index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost/Mustache-website/projects.html">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost/Mustache-website/about/index.html">About</a>
-            </li>
+      <div class="logo">Moze</div>
     
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost/Mustache-website/gallery.html">Gallery</a>
-            </li>
-       
-       <li class="nav-item">
-              <a class="nav-link" href="http://localhost/Mustache-website/products.html">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost/Mustache-website/clients/insert.html">Clients</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        
-        </div>
-      </div>
-    </nav>
+      <nav class="nav">
+        <a href="index.html" data-page="index" data-root="true">Página Inicial</a>
+        <a href="reservar.html" data-page="reservar" data-root="true">Reservar</a>
+        <a href="mensagens.html" data-page="mensagens" data-root="true">Mensagens</a>
+        <a href="blog/index.html" data-page="blog" data-root="true">Blog</a>
+        <a href="homepage.html" data-page="about" data-root="true">Sobre Nós</a>
+      </nav>
     
+      <a href="perfil.html" class="profile" aria-label="Perfil" data-root="true">
+        <img id="profile-pic-header" src="https://i.pravatar.cc/64?img=12" alt="Perfil" class="profile-avatar" style="width: 48px; height: 48px; object-fit: cover; border-radius: 50%;" />
+      </a>
     </header>
-         
+    
+    <script>
+      // Ajustar links do header baseado na profundidade do directório
+      (function() {
+        const pathname = window.location.pathname;
+        const depth = pathname.split('/').filter(p => p && p !== 'Moze').length - 1;
+        
+        if (depth > 0) {
+          const prefix = '../'.repeat(depth);
+          document.querySelectorAll('[data-root="true"]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('/')) {
+              link.setAttribute('href', prefix + href);
+            }
+          });
+        }
+      })();
+    </script>
+    
     <main>
         
 <div >
-  <p>Ver versao da galeria AOI e json e JQuery - <a href="http://localhost/Mustache-website/gallery-api.html">AQUI</a></p>
-  <p>Ver mais outra versao da galeria AOI e json e JQuery - <a href="http://localhost/Mustache-website/gallery-api-1.html">AQUI</a></p>
+  <p>Ver versao da galeria AOI e json e JQuery - <a href="/gallery-api.html">AQUI</a></p>
+  <p>Ver mais outra versao da galeria AOI e json e JQuery - <a href="/gallery-api-1.html">AQUI</a></p>
 <div class="slider-container">
   <div id="slider">
     <div class="slide">
-      <img src="http://localhost/Mustache-website/assets/images/project1.svg" alt="Project 1">
+      <img src="./assets/images/project1.svg" alt="Project 1">
     </div>
     <div class="slide">
-      <img src="http://localhost/Mustache-website/assets/images/project2.svg" alt="Project 2">
+      <img src="./assets/images/project2.svg" alt="Project 2">
     </div>
     <div class="slide">
-      <img src="http://localhost/Mustache-website/assets/images/project3.svg" alt="Project 3">
+      <img src="./assets/images/project3.svg" alt="Project 3">
     </div>
     <div class="slide">
-      <img src="http://localhost/Mustache-website/assets/images/project4.svg" alt="Project 4">
+      <img src="/assets/images/project4.svg" alt="Project 4">
     </div>
     <div class="slide">
-      <img src="http://localhost/Mustache-website/assets/images/project5.svg" alt="Project 5">
+      <img src="./assets/images/project5.svg" alt="Project 5">
     </div>
     <div class="slide">
-      <img src="http://localhost/Mustache-website/assets/images/project6.svg" alt="Project 6">
+      <img src="./assets/images/project6.svg" alt="Project 6">
     </div>
   </div>
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -99,45 +97,44 @@
 
     </main>
     
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Connect With Me</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="http://localhost/Mustache-website/index.html">Home</a></li>
-                    <li><a href="http://localhost/Mustache-website/about/index.html">About</a></li>
-                    <li><a href="http://localhost/Mustache-website/projects.html">Projectos</a></li>
-                    <li><a href="http://localhost/Mustache-website/contact.html">Contactos</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Portfolio. All rights reserved.</p>
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <h2>Moze Fotografias</h2>
+    </div>
+
+      <div class="footer-column ">
+        <h4>Links Úteis</h4>
+
+          <ul>
+              <li><a href="/about">Sobre Nós</a></li>
+              <li><a href="/gallery">Galeria</a></li>
+              <li><a href="/contact">Contactos</a></li>
+          </ul>
+
+      </div>
+      <div class="footer-column ">
+        <h4>Redes Sociais</h4>
+
+          <ul>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+          </ul>
+
+      </div>
+
+  </div>
+</footer>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.0/mustache.min.js"></script>
-    <script src="http://localhost/Mustache-website/assets/js/main.js"></script>
-     <script src="http://localhost/Mustache-website/assets/js/gallery-slider.js" crossorigin="anonymous"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/reservar_novo.js"></script>
+     <script src="/assets/js/gallery-slider.js" crossorigin="anonymous"></script>
        
       
    </body>

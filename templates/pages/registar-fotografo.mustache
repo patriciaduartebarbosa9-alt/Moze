@@ -1,0 +1,303 @@
+{{< layout}}
+{{$main}}
+
+<div class="registar-fotografo-container auth-register">
+    <!-- Painel Esquerdo -->
+    <div class="welcome-panel">
+        <h1 class="welcome-title">Bem Vindo de Volta!</h1>
+        <p class="welcome-subtitle">Entre para desfrutar melhor do nosso website.</p>
+        <a href="login.html" class="btn-entrar">Entrar</a>
+    </div>
+
+    <!-- Painel Direito -->
+    <div class="form-panel">
+        <h2 class="form-title">Criar Conta de Fotógrafo</h2>
+        
+        <div class="social-icons">
+            <a href="#" class="social-icon instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm3.5-10c0 1.93-1.57 3.5-3.5 3.5S8.5 13.93 8.5 12 10.07 8.5 12 8.5s3.5 1.57 3.5 3.5z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-icon linkedin" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-icon facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-icon twitter" title="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.953 4.57a10 10 0 002.856-3.915 9.957 9.957 0 01-2.828.856 4.957 4.957 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417a9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+            </a>
+        </div>
+
+        <form class="registro-form" id="registro-fotografo-form">
+            <div class="form-group">
+                <label for="nome">Nome Completo*</label>
+                <input type="text" id="nome" name="nome" placeholder="Maria Silva" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" placeholder="maria@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="+351 912345678">
+            </div>
+
+            <div class="form-group">
+                <label for="especialidades">Especialidades (separadas por vírgula)</label>
+                <input type="text" id="especialidades" name="especialidades" placeholder="Casamento, Retrato, Evento">
+            </div>
+
+            <div class="form-group">
+                <label for="preco">Preço por hora (€)*</label>
+                <input type="number" id="preco" name="preco" placeholder="50" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Sobre mim</label>
+                <textarea id="bio" name="bio" placeholder="Descreva um pouco sobre você e sua experiência..." rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password*</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password-confirm">Confirmar Password*</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password-confirm" name="password-confirm" placeholder="••••••••" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordConfirm()">
+                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="certificado">Certificado Profissional*</label>
+                <div class="file-upload-wrapper">
+                    <label for="certificado" class="file-upload-label">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span class="upload-text">Faz upload de um ficheiro ou arrasta para aqui.</span>
+                        <span class="upload-info">PDF, JPEG, PNG - até 5MB</span>
+                    </label>
+                    <input type="file" id="certificado" name="certificado" accept=".pdf,.jpeg,.jpg,.png" required style="display: none;">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary btn-auth">Registar como Fotógrafo</button>
+            
+            <div class="message" id="message"></div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.querySelector('.toggle-password:first-of-type .eye-icon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.style.opacity = '0.6';
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.style.opacity = '1';
+        }
+    }
+
+    function togglePasswordConfirm() {
+        const passwordInput = document.getElementById('password-confirm');
+        const eyeIcons = document.querySelectorAll('.eye-icon');
+        const eyeIcon = eyeIcons[1];
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.style.opacity = '0.6';
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.style.opacity = '1';
+        }
+    }
+
+    // Drag and drop para upload de certificado
+    const fileUploadLabel = document.querySelector('.file-upload-label');
+    const fileInput = document.getElementById('certificado');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        fileUploadLabel.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        fileUploadLabel.addEventListener(eventName, () => {
+            fileUploadLabel.classList.add('highlight');
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        fileUploadLabel.addEventListener(eventName, () => {
+            fileUploadLabel.classList.remove('highlight');
+        }, false);
+    });
+
+    fileUploadLabel.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+        updateFileName();
+    }, false);
+
+    fileInput.addEventListener('change', updateFileName);
+
+    function updateFileName() {
+        if (fileInput.files.length > 0) {
+            const fileName = fileInput.files[0].name;
+            const uploadText = fileUploadLabel.querySelector('.upload-text');
+            uploadText.textContent = 'Ficheiro: ' + fileName;
+        }
+    }
+
+    // Integração com API de registro
+    document.getElementById('registro-fotografo-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('telefone').value;
+        const especialidades = document.getElementById('especialidades').value;
+        const preco = document.getElementById('preco').value;
+        const bio = document.getElementById('bio').value;
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('password-confirm').value;
+        const certificado = document.getElementById('certificado').files[0];
+        const messageDiv = document.getElementById('message');
+        
+        // Validações
+        if (password !== passwordConfirm) {
+            messageDiv.textContent = 'As passwords não coincidem!';
+            messageDiv.className = 'message error';
+            return;
+        }
+
+        if (password.length < 6) {
+            messageDiv.textContent = 'A password deve ter pelo menos 6 caracteres!';
+            messageDiv.className = 'message error';
+            return;
+        }
+
+        if (!certificado) {
+            messageDiv.textContent = 'É necessário enviar um certificado!';
+            messageDiv.className = 'message error';
+            return;
+        }
+
+        if (certificado.size > 5 * 1024 * 1024) {
+            messageDiv.textContent = 'O certificado não pode ter mais de 5MB!';
+            messageDiv.className = 'message error';
+            return;
+        }
+        
+        try {
+            // Primeiro, registar o fotógrafo
+            const registerResponse = await fetch('../api/register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    nome, 
+                    email, 
+                    telefone,
+                    password,
+                    tipo: 'fotografo',
+                    especialidades,
+                    preco_hora: parseFloat(preco),
+                    bio
+                })
+            });
+            
+            const registerData = await registerResponse.json();
+            
+            if (registerData.status === 'success' || registerData.message.includes('sucesso')) {
+                messageDiv.textContent = 'Registo realizado! Enviando certificado...';
+                messageDiv.className = 'message success';
+                
+                // Agora fazer o login para obter session
+                const loginResponse = await fetch('../api/login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const loginData = await loginResponse.json();
+
+                if (loginData.status === 'success') {
+                    // Agora enviar o certificado
+                    const formData = new FormData();
+                    formData.append('certificado', certificado);
+
+                    const uploadResponse = await fetch('../api/upload_certificado.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const uploadData = await uploadResponse.json();
+
+                    if (uploadData.status === 'success') {
+                        messageDiv.textContent = 'Registo e certificado enviado com sucesso! Redirecionando...';
+                        messageDiv.className = 'message success';
+                        
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 2000);
+                    } else {
+                        messageDiv.textContent = 'Registo OK, mas erro ao enviar certificado: ' + uploadData.message;
+                        messageDiv.className = 'message error';
+                    }
+                } else {
+                    messageDiv.textContent = 'Registo OK, mas erro ao fazer login automático. Por favor, faça login manualmente.';
+                    messageDiv.className = 'message error';
+                }
+            } else {
+                messageDiv.textContent = registerData.message || 'Erro ao registar';
+                messageDiv.className = 'message error';
+            }
+        } catch (error) {
+            messageDiv.textContent = 'Erro ao conectar ao servidor: ' + error.message;
+            messageDiv.className = 'message error';
+        }
+    });
+</script>
+
+{{/main}}

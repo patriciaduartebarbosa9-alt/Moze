@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Perfil - MOZE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">Moze</div>
+
+  <nav class="nav">
+    <a href="index.html" data-page="index" data-root="true">Página Inicial</a>
+    <a href="reservar.html" data-page="reservar" data-root="true">Reservar</a>
+    <a href="mensagens.html" data-page="mensagens" data-root="true">Mensagens</a>
+    <a href="blog/index.html" data-page="blog" data-root="true">Blog</a>
+    <a href="homepage.html" data-page="about" data-root="true">Sobre Nós</a>
+  </nav>
+
+  <a href="perfil.html" class="profile" aria-label="Perfil" data-root="true">
+    <img id="profile-pic-header" src="https://i.pravatar.cc/64?img=12" alt="Perfil" class="profile-avatar" style="width: 48px; height: 48px; object-fit: cover; border-radius: 50%;" />
+  </a>
+</header>
+
+<script>
+  // Ajustar links do header baseado na profundidade do directório
+  (function() {
+    const pathname = window.location.pathname;
+    const depth = pathname.split('/').filter(p => p && p !== 'Moze').length - 1;
+    
+    if (depth > 0) {
+      const prefix = '../'.repeat(depth);
+      document.querySelectorAll('[data-root="true"]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('/')) {
+          link.setAttribute('href', prefix + href);
+        }
+      });
+    }
+  })();
+</script>
+
+<main class="edit-page">
+  <h1>Editar Perfil</h1>
+
+  <form class="edit-form">
+
+    <!-- FOTO DE PERFIL -->
+    <section class="edit-section">
+      <h2>Foto de Perfil</h2>
+      <div id="profile-preview"></div>
+      <input type="file" accept="image/*" id="profile-pic">
+      <label for="profile-pic">Escolher imagem</label>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="edit-section">
+      <h2>Editar Portfólio</h2>
+      <div id="portfolio-items"></div>
+      <button type="button" id="add-portfolio-item" style="background:#7b0000; color:#fff; border:none; padding:12px 32px; border-radius:8px; font-size:16px; cursor:pointer; margin:12px 0;">Adicionar Portfolio</button>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="edit-section">
+      <h2>Editar Serviços</h2>
+      <textarea id="services-text" rows="10" placeholder="Liste os serviços, um por linha..."></textarea>
+    </section>
+
+    <!-- PALAVRA PASSE -->
+    <section class="edit-section">
+      <h2>Alterar Palavra Passe</h2>
+      <input type="password" placeholder="Palavra passe atual">
+      <input type="password" placeholder="Nova palavra passe">
+      <input type="password" placeholder="Confirmar nova palavra passe">
+    </section>
+
+    <button type="submit" class="save-btn">Salvar Alterações</button>
+  </form>
+
+  <a href="perfil.html" class="back-link">Voltar ao Perfil</a>
+</main>
+
+<script src="assets/js/edit-profile.js"></script>

@@ -1,0 +1,35 @@
+{
+  "brand": "Moze",
+  "columns": [
+    {
+      "title": "Empresa",
+      "links": {
+        "items": [
+          { "label": "Sobre nós", "url": "/about" },
+          { "label": "Contactos", "url": "/contact" },
+          { "label": "Política de Privacidade", "url": "/privacy" },
+          { "label": "Termos e Condições", "url": "/terms" }
+        ]
+      }
+    },
+    {
+      "title": "Redes Sociais",
+      "links": {
+        "items": [
+          { "label": "Instagram", "url": "#" },
+          { "label": "Twitter", "url": "#" },
+          { "label": "Facebook", "url": "#" },
+          { "label": "LinkedIn", "url": "#" }
+        ]
+      }
+    },
+    {
+      "title": "Subscreva-se à nossa Newsletter",
+      "class": "newsletter",
+      "newsletter": {
+        "placeholder": "Insira o seu e-mail",
+        "button": "→"
+      }
+    }
+  ]
+}

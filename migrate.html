@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migração de Utilizadores - MOZE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #7b0000 0%, #5a0000 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #7b0000;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .status-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #7b0000;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .status-item label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .status-item span {
+            color: #666;
+        }
+        
+        .status-item.pending {
+            color: #ff6b00;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #7b0000;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a0000;
+            box-shadow: 0 4px 12px rgba(123, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.error {
+            display: block;
+            background: #ffe6e6;
+            color: #7b0000;
+            border: 1px solid #ffcccc;
+        }
+        
+        .message.success {
+            display: block;
+            background: #e6ffe6;
+            color: #006600;
+            border: 1px solid #ccffcc;
+        }
+        
+        .message.info {
+            display: block;
+            background: #e6f3ff;
+            color: #003d99;
+            border: 1px solid #ccddff;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #7b0000;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .info-box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Migração de Utilizadores</h1>
+        
+        <div id="message" class="message"></div>
+        
+        <div class="status-section">
+            <h3 style="color: #7b0000; margin-bottom: 15px; font-size: 16px;">Status Atual</h3>
+            
+            <div class="status-item">
+                <label>Clientes Registados:</label>
+                <span id="total-clients">-</span>
+            </div>
+            <div class="status-item">
+                <label>Clientes Migrados:</label>
+                <span id="migrated-clients">-</span>
+            </div>
+            <div class="status-item pending">
+                <label>Clientes Pendentes:</label>
+                <span id="pending-clients">-</span>
+            </div>
+            
+            <div style="border-top: 1px solid #ddd; margin: 15px 0;"></div>
+            
+            <div class="status-item">
+                <label>Fotógrafos Registados:</label>
+                <span id="total-photographers">-</span>
+            </div>
+            <div class="status-item">
+                <label>Fotógrafos Migrados:</label>
+                <span id="migrated-photographers">-</span>
+            </div>
+            <div class="status-item pending">
+                <label>Fotógrafos Pendentes:</label>
+                <span id="pending-photographers">-</span>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn-secondary" onclick="checkStatus()">🔄 Verificar Status</button>
+            <button class="btn-success" onclick="migrateAll()">✅ Migrar Tudo</button>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn-primary" onclick="migrateClients()">Migrar Clientes</button>
+            <button class="btn-primary" onclick="migratePhotographers()">Migrar Fotógrafos</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processando...</p>
+        </div>
+        
+        <div class="info-box">
+            <strong>ℹ️ Informações:</strong>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Cada utilizador será migrado apenas uma vez</li>
+                <li>Clientes recebem localização padrão: "Não especificado"</li>
+                <li>Fotógrafos recebem especialidades padrão: "Não especificado"</li>
+                <li>Fotógrafos começam disponíveis (disponivel=1)</li>
+                <li>Certificados pendentes de verificação (certificado_verificado=0)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            showLoading(true);
+            showMessage('', '');
+            
+            try {
+                const response = await fetch('api/migrate_users.php', {
+                    method: 'GET'
+                });
+                
+                const text = await response.text();
+                console.log('Raw response:', text);
+                
+                const data = JSON.parse(text);
+                
+                if (data.status === 'success') {
+                    const { clientes, fotografos } = data.data;
+                    
+                    document.getElementById('total-clients').textContent = clientes.total;
+                    document.getElementById('migrated-clients').textContent = clientes.migrados;
+                    document.getElementById('pending-clients').textContent = clientes.pendentes;
+                    
+                    document.getElementById('total-photographers').textContent = fotografos.total;
+                    document.getElementById('migrated-photographers').textContent = fotografos.migrados;
+                    document.getElementById('pending-photographers').textContent = fotografos.pendentes;
+                    
+                    showMessage('Status atualizado com sucesso', 'info');
+                } else {
+                    showMessage(data.message || 'Erro ao verificar status', 'error');
+                }
+            } catch (error) {
+                showMessage('Erro ao conectar: ' + error.message, 'error');
+                console.error('Error details:', error);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        async function migrateClients() {
+            if (!confirm('Tem a certeza que deseja migrar os clientes?')) return;
+            
+            showLoading(true);
+            showMessage('', '');
+            
+            try {
+                const response = await fetch('api/migrate_users.php?action=migrate_clients', {
+                    method: 'GET'
+                });
+                
+                const text = await response.text();
+                const data = JSON.parse(text);
+                
+                if (data.status === 'success') {
+                    showMessage(`✅ ${data.data.rows} clientes migrados com sucesso!`, 'success');
+                    setTimeout(() => checkStatus(), 1500);
+                } else {
+                    showMessage(data.message || 'Erro ao migrar clientes', 'error');
+                }
+            } catch (error) {
+                showMessage('Erro ao conectar: ' + error.message, 'error');
+                console.error('Error details:', error);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        async function migratePhotographers() {
+            if (!confirm('Tem a certeza que deseja migrar os fotógrafos?')) return;
+            
+            showLoading(true);
+            showMessage('', '');
+            
+            try {
+                const response = await fetch('api/migrate_users.php?action=migrate_photographers', {
+                    method: 'GET'
+                });
+                
+                const text = await response.text();
+                const data = JSON.parse(text);
+                
+                if (data.status === 'success') {
+                    showMessage(`✅ ${data.data.rows} fotógrafos migrados com sucesso!`, 'success');
+                    setTimeout(() => checkStatus(), 1500);
+                } else {
+                    showMessage(data.message || 'Erro ao migrar fotógrafos', 'error');
+                }
+            } catch (error) {
+                showMessage('Erro ao conectar: ' + error.message, 'error');
+                console.error('Error details:', error);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        async function migrateAll() {
+            if (!confirm('Tem a certeza que deseja migrar TODOS os utilizadores?\n\nIsso pode levar alguns momentos...')) return;
+            
+            showLoading(true);
+            showMessage('', '');
+            
+            try {
+                const response = await fetch('api/migrate_users.php?action=migrate_all', {
+                    method: 'GET'
+                });
+                
+                const text = await response.text();
+                const data = JSON.parse(text);
+                
+                if (data.status === 'success') {
+                    const clientes = data.data.clientes || 0;
+                    const fotografos = data.data.fotografos || 0;
+                    showMessage(`✅ Migração completa!\n• ${clientes} clientes migrados\n• ${fotografos} fotógrafos migrados`, 'success');
+                    setTimeout(() => checkStatus(), 1500);
+                } else {
+                    showMessage(data.message || 'Erro ao migrar', 'error');
+                }
+            } catch (error) {
+                showMessage('Erro ao conectar: ' + error.message, 'error');
+                console.error('Error details:', error);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = message;
+            messageDiv.className = `message ${type}`;
+        }
+        
+        function showLoading(show) {
+            document.getElementById('loading').classList.toggle('active', show);
+        }
+        
+        // Carregar status ao abrir a página
+        window.addEventListener('load', checkStatus);
+    </script>
+</body>
+</html>
